@@ -31,6 +31,7 @@ class KakaoBlogCell: UITableViewCell {
         thumbNailImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         thumbNailImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         thumbNailImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        thumbNailImageView.widthAnchor.constraint(equalToConstant: frame.width/4).isActive = true
         
         addSubview(blogNameLabel)
         blogNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +48,7 @@ class KakaoBlogCell: UITableViewCell {
     }
     
     func attribute() {
-        thumbNailImageView.contentMode = .scaleAspectFit
+//        thumbNailImageView.contentMode = .scaleAspectFill
     }
     
     func configureUI(item: KakaoBlogModel) {

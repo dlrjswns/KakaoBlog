@@ -12,24 +12,33 @@ class KakaoBlogViewModel {
     var disposeBag = DisposeBag()
     
     //ViewModel -> View
-    var kakaoBlogData = BehaviorSubject<[KakaoBlogModel]>(value: [])
+    var kakaoBlogSubject = BehaviorSubject<[KakaoBlogModel]>(value: [])
     
     //View -> ViewModel
-//    var query = Behavior
+    var querySubject = BehaviorSubject<String>(value: "")
     
     init(usecase: KakaoBlogUsecase) {
         self.usecase = usecase
-        
-        usecase.fetchKakaoBlog(query: "이효리").subscribe(onNext: { [weak self] fetchResult in
+
+        observableQuerySubject()
+    }
+    
+    func searchBlog(query: String) {
+        usecase.fetchKakaoBlog(query: query).subscribe(onNext: { [weak self] fetchResult in
             switch fetchResult {
-            case .failure(let error):
-                    break
-            case .success(let entity):
-                let kakaoBlogModels = usecase.fetchKakaoBlogModel(entity: entity)
-                self?.kakaoBlogData.onNext(kakaoBlogModels)
+                case .failure(let error):
+                        break
+                case .success(let entity):
+                    guard let kakaoBlogModels = self?.usecase.fetchKakaoBlogModel(entity: entity) else { return }
+                    self?.kakaoBlogSubject.onNext(kakaoBlogModels)
             }
         }).disposed(by: disposeBag)
     }
     
+    func observableQuerySubject() {
+        querySubject.asObservable().subscribe(onNext: { [weak self] query in
+            self?.searchBlog(query: query)
+        }).disposed(by: disposeBag)
+    }
     
 }

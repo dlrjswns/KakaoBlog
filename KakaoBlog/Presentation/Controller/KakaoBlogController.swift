@@ -6,10 +6,20 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class KakaoBlogController: BaseViewController {
     
     let selfView = KakaoBlogView()
+    var searchController: UISearchController = {
+        let sc = UISearchController(searchResultsController: nil)
+        sc.searchBar.placeholder = "Search blog"
+        sc.searchBar.barTintColor = .systemBackground
+        sc.obscuresBackgroundDuringPresentation = false
+        return sc
+    }()
+    
     private let viewModel: KakaoBlogViewModel
     
     init(viewModel: KakaoBlogViewModel) {
@@ -23,9 +33,13 @@ class KakaoBlogController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.kakaoBlogData.bind(to: selfView.tableView.rx.items(cellIdentifier: KakaoBlogCell.identifier, cellType: KakaoBlogCell.self)) { index, item, cell in
+        viewModel.kakaoBlogSubject.bind(to: selfView.tableView.rx.items(cellIdentifier: KakaoBlogCell.identifier, cellType: KakaoBlogCell.self)) { index, item, cell in
             cell.configureUI(item: item)
         }.disposed(by: disposeBag)
+        
+        searchController.searchBar.rx.text.debounce(.milliseconds(300), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] query in
+            self?.viewModel.querySubject.onNext(query ?? "")
+        }).disposed(by: disposeBag)
         
         
     }
@@ -40,7 +54,14 @@ class KakaoBlogController: BaseViewController {
     }
     
     override func attribute() {
+//        title = "Daum blog"
+//        navigationItem.largeTitleDisplayMode = .always
+//        navigationController?.navigationBar.largeContentTitle = "Daum blog"
+        
         selfView.tableView.register(KakaoBlogCell.self, forCellReuseIdentifier: KakaoBlogCell.identifier)
         selfView.tableView.delegate = self
+        self.navigationItem.searchController = searchController
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+
     }
 }
