@@ -3,27 +3,55 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		70F285B527C60A82009D4F52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285B427C60A82009D4F52 /* AppDelegate.swift */; };
 		70F285B727C60A82009D4F52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285B627C60A82009D4F52 /* SceneDelegate.swift */; };
-		70F285B927C60A82009D4F52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285B827C60A82009D4F52 /* ViewController.swift */; };
-		70F285BC27C60A82009D4F52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70F285BA27C60A82009D4F52 /* Main.storyboard */; };
 		70F285BE27C60A83009D4F52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70F285BD27C60A83009D4F52 /* Assets.xcassets */; };
 		70F285C127C60A83009D4F52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70F285BF27C60A83009D4F52 /* LaunchScreen.storyboard */; };
+		70F285CA27C71FFF009D4F52 /* KakaoBlogRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285C927C71FFF009D4F52 /* KakaoBlogRepositoryImpl.swift */; };
+		70F285CC27C72340009D4F52 /* KakaoBlogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285CB27C72340009D4F52 /* KakaoBlogRepository.swift */; };
+		70F285D027C724A8009D4F52 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285CF27C724A8009D4F52 /* BaseViewController.swift */; };
+		70F285D227C72507009D4F52 /* KakaoBlogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285D127C72507009D4F52 /* KakaoBlogController.swift */; };
+		70F285D527C72529009D4F52 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285D427C72529009D4F52 /* BaseView.swift */; };
+		70F285D827C7256E009D4F52 /* KakaoBlogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285D727C7256E009D4F52 /* KakaoBlogView.swift */; };
+		70F285DB27C72847009D4F52 /* KakaoBlogEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285DA27C72847009D4F52 /* KakaoBlogEntity.swift */; };
+		70F285DE27C72B00009D4F52 /* KakaoBlogUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285DD27C72B00009D4F52 /* KakaoBlogUsecase.swift */; };
+		70F285E127C72B9D009D4F52 /* KakaoBlogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285E027C72B9D009D4F52 /* KakaoBlogViewModel.swift */; };
+		70F285E327C7331A009D4F52 /* KakaoBlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285E227C7331A009D4F52 /* KakaoBlogCell.swift */; };
+		70F285E627C73643009D4F52 /* extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285E527C73643009D4F52 /* extension+UIImageView.swift */; };
+		70F285E827C73BEC009D4F52 /* KakaoBlog+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285E727C73BEC009D4F52 /* KakaoBlog+UITableView.swift */; };
+		70F285EA27C73CFB009D4F52 /* KakaoBlogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285E927C73CFB009D4F52 /* KakaoBlogModel.swift */; };
+		70F285ED27C7410F009D4F52 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285EC27C7410F009D4F52 /* Font.swift */; };
+		C797E18B6275CB8304A3D855 /* Pods_KakaoBlog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 752C919FA6266AEA4B79D6CA /* Pods_KakaoBlog.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32EBA7F0AFB16FB28CC08744 /* Pods-KakaoBlog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KakaoBlog.debug.xcconfig"; path = "Target Support Files/Pods-KakaoBlog/Pods-KakaoBlog.debug.xcconfig"; sourceTree = "<group>"; };
 		70F285B127C60A82009D4F52 /* KakaoBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KakaoBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70F285B427C60A82009D4F52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70F285B627C60A82009D4F52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		70F285B827C60A82009D4F52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		70F285BB27C60A82009D4F52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		70F285BD27C60A83009D4F52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70F285C027C60A83009D4F52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70F285C227C60A83009D4F52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70F285C927C71FFF009D4F52 /* KakaoBlogRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBlogRepositoryImpl.swift; sourceTree = "<group>"; };
+		70F285CB27C72340009D4F52 /* KakaoBlogRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBlogRepository.swift; sourceTree = "<group>"; };
+		70F285CF27C724A8009D4F52 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		70F285D127C72507009D4F52 /* KakaoBlogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBlogController.swift; sourceTree = "<group>"; };
+		70F285D427C72529009D4F52 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		70F285D727C7256E009D4F52 /* KakaoBlogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBlogView.swift; sourceTree = "<group>"; };
+		70F285DA27C72847009D4F52 /* KakaoBlogEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBlogEntity.swift; sourceTree = "<group>"; };
+		70F285DD27C72B00009D4F52 /* KakaoBlogUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBlogUsecase.swift; sourceTree = "<group>"; };
+		70F285E027C72B9D009D4F52 /* KakaoBlogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBlogViewModel.swift; sourceTree = "<group>"; };
+		70F285E227C7331A009D4F52 /* KakaoBlogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBlogCell.swift; sourceTree = "<group>"; };
+		70F285E527C73643009D4F52 /* extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension+UIImageView.swift"; sourceTree = "<group>"; };
+		70F285E727C73BEC009D4F52 /* KakaoBlog+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KakaoBlog+UITableView.swift"; sourceTree = "<group>"; };
+		70F285E927C73CFB009D4F52 /* KakaoBlogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBlogModel.swift; sourceTree = "<group>"; };
+		70F285EC27C7410F009D4F52 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		752C919FA6266AEA4B79D6CA /* Pods_KakaoBlog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KakaoBlog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A8D1B8C9F7203CD566F347A /* Pods-KakaoBlog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KakaoBlog.release.xcconfig"; path = "Target Support Files/Pods-KakaoBlog/Pods-KakaoBlog.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +59,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C797E18B6275CB8304A3D855 /* Pods_KakaoBlog.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17DE59632C81318872F115B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				752C919FA6266AEA4B79D6CA /* Pods_KakaoBlog.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		70F285A827C60A82009D4F52 = {
 			isa = PBXGroup;
 			children = (
 				70F285B327C60A82009D4F52 /* KakaoBlog */,
 				70F285B227C60A82009D4F52 /* Products */,
+				C0F766A5046E444ADCA35D44 /* Pods */,
+				17DE59632C81318872F115B7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +95,108 @@
 		70F285B327C60A82009D4F52 /* KakaoBlog */ = {
 			isa = PBXGroup;
 			children = (
+				70F285EB27C7410A009D4F52 /* Components */,
+				70F285E427C7362D009D4F52 /* extension */,
+				70F285DC27C72AEF009D4F52 /* Domain */,
+				70F285D927C72795009D4F52 /* Entity */,
+				70F285CD27C72476009D4F52 /* Presentation */,
+				70F285C827C71FF0009D4F52 /* Repository */,
 				70F285B427C60A82009D4F52 /* AppDelegate.swift */,
 				70F285B627C60A82009D4F52 /* SceneDelegate.swift */,
-				70F285B827C60A82009D4F52 /* ViewController.swift */,
-				70F285BA27C60A82009D4F52 /* Main.storyboard */,
 				70F285BD27C60A83009D4F52 /* Assets.xcassets */,
 				70F285BF27C60A83009D4F52 /* LaunchScreen.storyboard */,
 				70F285C227C60A83009D4F52 /* Info.plist */,
 			);
 			path = KakaoBlog;
+			sourceTree = "<group>";
+		};
+		70F285C827C71FF0009D4F52 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				70F285C927C71FFF009D4F52 /* KakaoBlogRepositoryImpl.swift */,
+				70F285CB27C72340009D4F52 /* KakaoBlogRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		70F285CD27C72476009D4F52 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				70F285DF27C72B8B009D4F52 /* ViewModel */,
+				70F285D327C72525009D4F52 /* View */,
+				70F285CE27C724A1009D4F52 /* Controller */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		70F285CE27C724A1009D4F52 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				70F285CF27C724A8009D4F52 /* BaseViewController.swift */,
+				70F285D127C72507009D4F52 /* KakaoBlogController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		70F285D327C72525009D4F52 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				70F285D427C72529009D4F52 /* BaseView.swift */,
+				70F285D727C7256E009D4F52 /* KakaoBlogView.swift */,
+				70F285E227C7331A009D4F52 /* KakaoBlogCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		70F285D927C72795009D4F52 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				70F285DA27C72847009D4F52 /* KakaoBlogEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		70F285DC27C72AEF009D4F52 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				70F285DD27C72B00009D4F52 /* KakaoBlogUsecase.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		70F285DF27C72B8B009D4F52 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				70F285E027C72B9D009D4F52 /* KakaoBlogViewModel.swift */,
+				70F285E927C73CFB009D4F52 /* KakaoBlogModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		70F285E427C7362D009D4F52 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				70F285E527C73643009D4F52 /* extension+UIImageView.swift */,
+				70F285E727C73BEC009D4F52 /* KakaoBlog+UITableView.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		70F285EB27C7410A009D4F52 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				70F285EC27C7410F009D4F52 /* Font.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C0F766A5046E444ADCA35D44 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				32EBA7F0AFB16FB28CC08744 /* Pods-KakaoBlog.debug.xcconfig */,
+				7A8D1B8C9F7203CD566F347A /* Pods-KakaoBlog.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +206,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 70F285C527C60A83009D4F52 /* Build configuration list for PBXNativeTarget "KakaoBlog" */;
 			buildPhases = (
+				9CF01520E7C45BCDA2CF67D1 /* [CP] Check Pods Manifest.lock */,
 				70F285AD27C60A82009D4F52 /* Sources */,
 				70F285AE27C60A82009D4F52 /* Frameworks */,
 				70F285AF27C60A82009D4F52 /* Resources */,
+				D82F9F9CC5594C12D11B1224 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,34 +260,80 @@
 			files = (
 				70F285C127C60A83009D4F52 /* LaunchScreen.storyboard in Resources */,
 				70F285BE27C60A83009D4F52 /* Assets.xcassets in Resources */,
-				70F285BC27C60A82009D4F52 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9CF01520E7C45BCDA2CF67D1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KakaoBlog-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D82F9F9CC5594C12D11B1224 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KakaoBlog/Pods-KakaoBlog-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KakaoBlog/Pods-KakaoBlog-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KakaoBlog/Pods-KakaoBlog-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		70F285AD27C60A82009D4F52 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70F285B927C60A82009D4F52 /* ViewController.swift in Sources */,
+				70F285D827C7256E009D4F52 /* KakaoBlogView.swift in Sources */,
+				70F285E827C73BEC009D4F52 /* KakaoBlog+UITableView.swift in Sources */,
+				70F285D027C724A8009D4F52 /* BaseViewController.swift in Sources */,
+				70F285D227C72507009D4F52 /* KakaoBlogController.swift in Sources */,
+				70F285DE27C72B00009D4F52 /* KakaoBlogUsecase.swift in Sources */,
+				70F285CA27C71FFF009D4F52 /* KakaoBlogRepositoryImpl.swift in Sources */,
+				70F285E127C72B9D009D4F52 /* KakaoBlogViewModel.swift in Sources */,
 				70F285B527C60A82009D4F52 /* AppDelegate.swift in Sources */,
+				70F285D527C72529009D4F52 /* BaseView.swift in Sources */,
 				70F285B727C60A82009D4F52 /* SceneDelegate.swift in Sources */,
+				70F285EA27C73CFB009D4F52 /* KakaoBlogModel.swift in Sources */,
+				70F285E327C7331A009D4F52 /* KakaoBlogCell.swift in Sources */,
+				70F285ED27C7410F009D4F52 /* Font.swift in Sources */,
+				70F285E627C73643009D4F52 /* extension+UIImageView.swift in Sources */,
+				70F285DB27C72847009D4F52 /* KakaoBlogEntity.swift in Sources */,
+				70F285CC27C72340009D4F52 /* KakaoBlogRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		70F285BA27C60A82009D4F52 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				70F285BB27C60A82009D4F52 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		70F285BF27C60A83009D4F52 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -283,10 +463,12 @@
 		};
 		70F285C627C60A83009D4F52 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32EBA7F0AFB16FB28CC08744 /* Pods-KakaoBlog.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ASZ874HB9K;
 				INFOPLIST_FILE = KakaoBlog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -301,10 +483,12 @@
 		};
 		70F285C727C60A83009D4F52 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A8D1B8C9F7203CD566F347A /* Pods-KakaoBlog.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ASZ874HB9K;
 				INFOPLIST_FILE = KakaoBlog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
