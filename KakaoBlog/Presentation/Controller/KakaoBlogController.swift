@@ -38,7 +38,7 @@ class KakaoBlogController: BaseViewController {
         }.disposed(by: disposeBag)
         
         searchController.searchBar.rx.text.debounce(.milliseconds(300), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] query in
-            self?.viewModel.querySubject.onNext(query ?? "")
+            self?.viewModel.queryRelay.accept(query ?? "")
         }).disposed(by: disposeBag)
         
         

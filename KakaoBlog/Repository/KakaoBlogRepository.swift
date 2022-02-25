@@ -14,6 +14,7 @@ protocol KakaoBlogRepository {
 enum KakaoError: Error {
     case urlError
     case decodeError
+    case defaultError
     
     var errorMessage: String? {
         switch self {
@@ -21,6 +22,8 @@ enum KakaoError: Error {
             return "올바르지않는 url 입니다"
         case .decodeError:
             return "Decode 에러"
+        case .defaultError:
+            return "잠시후에 다시 시도해주세요"
         }
     }
 }

@@ -35,15 +35,15 @@ class KakaoBlogCell: UITableViewCell {
         
         addSubview(blogNameLabel)
         blogNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        blogNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/4).isActive = true
-        blogNameLabel.leftAnchor.constraint(equalTo: thumbNailImageView.rightAnchor).isActive = true
+        blogNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: frame.height / 4).isActive = true
+        blogNameLabel.leftAnchor.constraint(equalTo: thumbNailImageView.rightAnchor, constant: 15).isActive = true
         blogNameLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         
         addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: blogNameLabel.bottomAnchor).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -frame.height/4).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: thumbNailImageView.rightAnchor).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: thumbNailImageView.rightAnchor, constant: 15).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
     }
     
