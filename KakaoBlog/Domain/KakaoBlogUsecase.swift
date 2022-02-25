@@ -15,6 +15,7 @@ class KakaoBlogUsecase {
     }
     
     func fetchKakaoBlog(query: String) -> Observable<Result<KakaoBlogEntity, KakaoError>> {
+        print("fefef")
         return repository.fetchKakaoBlog(query: query)
     }
     

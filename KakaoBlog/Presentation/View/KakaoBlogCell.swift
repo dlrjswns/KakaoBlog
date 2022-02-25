@@ -52,6 +52,7 @@ class KakaoBlogCell: UITableViewCell {
     }
     
     func configureUI(item: KakaoBlogModel) {
+        print("item = \(item)")
         thumbNailImageView.loadImage(thumbNailUrl: item.thumbnail)
         blogNameLabel.text = item.blogname
         titleLabel.text = item.title

@@ -33,12 +33,13 @@ class KakaoBlogController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.kakaoBlogSubject.bind(to: selfView.tableView.rx.items(cellIdentifier: KakaoBlogCell.identifier, cellType: KakaoBlogCell.self)) { index, item, cell in
+        viewModel.kakaoBlogMenus.drive(selfView.tableView.rx.items(cellIdentifier: KakaoBlogCell.identifier, cellType: KakaoBlogCell.self)) { index, item, cell in
+            print("didload")
             cell.configureUI(item: item)
         }.disposed(by: disposeBag)
         
         searchController.searchBar.rx.text.debounce(.milliseconds(300), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] query in
-            self?.viewModel.queryRelay.accept(query ?? "")
+            self?.viewModel.queryInput.onNext(query ?? "anjdi")
         }).disposed(by: disposeBag)
         
         
