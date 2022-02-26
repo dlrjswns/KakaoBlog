@@ -13,7 +13,7 @@ class KakaoBlogViewModel {
     var disposeBag = DisposeBag()
     
     //ViewModel -> View
-    let kakaoBlogMenus: Driver<[KakaoBlogModel]>
+    let kakaoBlogMenus: Observable<[KakaoBlogModel]>
 //    var kakaoBlogSubject = BehaviorRelay<[KakaoBlogModel]>(value: [])
     let errorMessage: Signal<KakaoError>
     
@@ -23,30 +23,41 @@ class KakaoBlogViewModel {
     
     init(usecase: KakaoBlogUsecase) {
         self.usecase = usecase
-        let querySubject = PublishSubject<String>()
+        
+//        usecase.fetchKakaoBlog(query: "뭐야").subscribe(onNext: { result in
+//            switch result {
+//            case .success(let entity):
+//                print("entity = \(entity)")
+//            case .failure(let er):
+//                print("er = \(er.errorMessage)")
+//            }
+//        }).disposed(by: disposeBag)
+        
+        let querySubject = BehaviorSubject<String>(value: "")
         let fetching = PublishSubject<Void>()
-        let menus = BehaviorSubject<[KakaoBlogModel]>(value: [])
+        let menus = BehaviorRelay<[KakaoBlogModel]>(value: [])
         let activating = BehaviorSubject<Bool>(value: false)
         let error = PublishSubject<KakaoError>()
         
         fetchMenus = fetching.asObserver()
         queryInput = querySubject.asObserver()
         errorMessage = error.asSignal(onErrorJustReturn: KakaoError.defaultError)
-        kakaoBlogMenus = menus.asDriver(onErrorJustReturn: [])
+        kakaoBlogMenus = menus.asObservable()
         
-        querySubject.subscribe(onNext: { query in
+        querySubject.asObservable().subscribe(onNext: { query in
             print("query = \(query)")
-            _ = usecase.fetchKakaoBlog(query: query).map { result in
-                print("씨발")
+            _ = usecase.fetchKakaoBlog(query: query).subscribe(onNext: { result in
                 switch result {
                     case .failure(let err):
-                        print("err = \(err.errorMessage ?? "tlqkf")")
                         error.onNext(err)
                     case .success(let kakaoBlogEntity):
-                        print("kakao = \(kakaoBlogEntity)")
-                        menus.onNext(usecase.fetchKakaoBlogModel(entity: kakaoBlogEntity))
+                        menus.accept(usecase.fetchKakaoBlogModel(entity: kakaoBlogEntity))
                 }
-            }
+            })
+        }).disposed(by: disposeBag)
+        
+        menus.subscribe(onNext: { ck in
+            print("menus = \(ck)")
         }).disposed(by: disposeBag)
         
         

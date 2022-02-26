@@ -18,18 +18,20 @@ class KakaoBlogRepositoryImpl: KakaoBlogRepository {
     func fetchKakaoBlog(query: String) -> Observable<Result<KakaoBlogEntity, KakaoError>> {
         let urlRequestResult = getKakaoBlogURLRequest(query: query)
         switch urlRequestResult {
-        case .failure(let error):
-            return .just(.failure(error))
-        case .success(let urlRequest):
-            return session.rx.data(request: urlRequest).map { data in
-                do {
-                    let kakaoBlogEntity = try JSONDecoder().decode(KakaoBlogEntity.self, from: data)
-                    return .success(kakaoBlogEntity)
-                } catch {
-                    let error = KakaoError.decodeError
-                    return .failure(error)
+            case .failure(let error):
+                return .just(.failure(error))
+            case .success(let urlRequest):
+                print("urlrEquet = \(urlRequest)")
+                return session.rx.data(request: urlRequest).map { data in
+                    print("Data = \(data)")
+                    do {
+                        let kakaoBlogEntity = try JSONDecoder().decode(KakaoBlogEntity.self, from: data)
+                        return .success(kakaoBlogEntity)
+                    } catch {
+                        let error = KakaoError.decodeError
+                        return .failure(error)
+                    }
                 }
-            }
         }
     }
 }
