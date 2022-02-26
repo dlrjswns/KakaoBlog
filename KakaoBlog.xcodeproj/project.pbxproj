@@ -25,6 +25,7 @@
 		70F285E827C73BEC009D4F52 /* KakaoBlog+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285E727C73BEC009D4F52 /* KakaoBlog+UITableView.swift */; };
 		70F285EA27C73CFB009D4F52 /* KakaoBlogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285E927C73CFB009D4F52 /* KakaoBlogModel.swift */; };
 		70F285ED27C7410F009D4F52 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F285EC27C7410F009D4F52 /* Font.swift */; };
+		70F2864F27CA23CA009D4F52 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F2864E27CA23CA009D4F52 /* LoadingView.swift */; };
 		C797E18B6275CB8304A3D855 /* Pods_KakaoBlog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 752C919FA6266AEA4B79D6CA /* Pods_KakaoBlog.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		70F285E727C73BEC009D4F52 /* KakaoBlog+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KakaoBlog+UITableView.swift"; sourceTree = "<group>"; };
 		70F285E927C73CFB009D4F52 /* KakaoBlogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBlogModel.swift; sourceTree = "<group>"; };
 		70F285EC27C7410F009D4F52 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		70F2864E27CA23CA009D4F52 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		752C919FA6266AEA4B79D6CA /* Pods_KakaoBlog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KakaoBlog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A8D1B8C9F7203CD566F347A /* Pods-KakaoBlog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KakaoBlog.release.xcconfig"; path = "Target Support Files/Pods-KakaoBlog/Pods-KakaoBlog.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				70F285EC27C7410F009D4F52 /* Font.swift */,
+				70F2864E27CA23CA009D4F52 /* LoadingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				70F285E827C73BEC009D4F52 /* KakaoBlog+UITableView.swift in Sources */,
 				70F285D027C724A8009D4F52 /* BaseViewController.swift in Sources */,
 				70F285D227C72507009D4F52 /* KakaoBlogController.swift in Sources */,
+				70F2864F27CA23CA009D4F52 /* LoadingView.swift in Sources */,
 				70F285DE27C72B00009D4F52 /* KakaoBlogUsecase.swift in Sources */,
 				70F285CA27C71FFF009D4F52 /* KakaoBlogRepositoryImpl.swift in Sources */,
 				70F285E127C72B9D009D4F52 /* KakaoBlogViewModel.swift in Sources */,

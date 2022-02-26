@@ -14,7 +14,7 @@ class KakaoBlogViewModel {
     
     //ViewModel -> View
     let kakaoBlogMenus: Observable<[KakaoBlogModel]>
-//    var kakaoBlogSubject = BehaviorRelay<[KakaoBlogModel]>(value: [])
+    let activated: Driver<Bool>
     let errorMessage: Signal<KakaoError>
     
     //View -> ViewModel
@@ -36,30 +36,43 @@ class KakaoBlogViewModel {
         let querySubject = BehaviorSubject<String>(value: "")
         let fetching = PublishSubject<Void>()
         let menus = BehaviorRelay<[KakaoBlogModel]>(value: [])
-        let activating = BehaviorSubject<Bool>(value: false)
+        let activating = PublishSubject<Bool>()
         let error = PublishSubject<KakaoError>()
         
         fetchMenus = fetching.asObserver()
         queryInput = querySubject.asObserver()
         errorMessage = error.asSignal(onErrorJustReturn: KakaoError.defaultError)
         kakaoBlogMenus = menus.asObservable()
+        activated = activating.asDriver(onErrorJustReturn: false)
         
-        querySubject.asObservable().subscribe(onNext: { query in
-            print("query = \(query)")
-            _ = usecase.fetchKakaoBlog(query: query).subscribe(onNext: { result in
-                switch result {
-                    case .failure(let err):
-                        error.onNext(err)
-                    case .success(let kakaoBlogEntity):
-                        menus.accept(usecase.fetchKakaoBlogModel(entity: kakaoBlogEntity))
-                }
-            })
-        }).disposed(by: disposeBag)
+        fetching
+            .flatMap{querySubject.asObservable()}
+            .subscribe(onNext: { query in
+                activating.onNext(true)
+                _ = usecase.fetchKakaoBlog(query: query).subscribe(onNext: { result in
+                    activating.onNext(false)
+                    switch result {
+                        case .failure(let err):
+                            error.onNext(err)
+                        case .success(let kakaoBlogEntity):
+                            menus.accept(usecase.fetchKakaoBlogModel(entity: kakaoBlogEntity))
+                    }
+                })
+            }).disposed(by: disposeBag)
         
-        menus.subscribe(onNext: { ck in
-            print("menus = \(ck)")
-        }).disposed(by: disposeBag)
         
+//        querySubject.asObservable().subscribe(onNext: { query in
+//            activating.onNext(true)
+//            _ = usecase.fetchKakaoBlog(query: query).subscribe(onNext: { result in
+//                activating.onNext(false)
+//                switch result {
+//                    case .failure(let err):
+//                        error.onNext(err)
+//                    case .success(let kakaoBlogEntity):
+//                        menus.accept(usecase.fetchKakaoBlogModel(entity: kakaoBlogEntity))
+//                }
+//            })
+//        }).disposed(by: disposeBag)
         
 //        let fetchKakaoBlogEntity = usecase.fetchKakaoBlog(query: "").share()
 //

@@ -33,18 +33,26 @@ class KakaoBlogController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         viewModel.kakaoBlogMenus.bind(to: selfView.tableView.rx.items(cellIdentifier: KakaoBlogCell.identifier, cellType: KakaoBlogCell.self)) { index, item, cell in
             print("didload")
             cell.configureUI(item: item)
         }.disposed(by: disposeBag)
         
-        searchController.searchBar.rx.text.orEmpty.debounce(.milliseconds(300), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] query in
+        searchController.searchBar.rx.text.orEmpty.filter{ $0.count != 0 }.debounce(.milliseconds(300), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] query in
+            self?.viewModel.fetchMenus.onNext(())
             self?.viewModel.queryInput.onNext(query)
         }).disposed(by: disposeBag)
         
-        viewModel.kakaoBlogMenus.subscribe(onNext: { data in
-            print("data = \(data)")
+        viewModel.errorMessage.emit(onNext: { error in
+            guard let errorMessage = error.errorMessage else { return }
+            print("에러 호출: \(errorMessage)")
         }).disposed(by: disposeBag)
+        
+        viewModel.activated.drive(onNext: { [weak self] isActivating in
+            self?.selfView.loadingView.isHidden = !isActivating
+        }).disposed(by: disposeBag)
+        
     }
     
     override func layout() {
@@ -63,6 +71,8 @@ class KakaoBlogController: BaseViewController {
         
         selfView.tableView.register(KakaoBlogCell.self, forCellReuseIdentifier: KakaoBlogCell.identifier)
         selfView.tableView.delegate = self
+        selfView.loadingView.isHidden = true
+        
         self.navigationItem.searchController = searchController
         self.navigationController?.navigationBar.prefersLargeTitles = true
 
