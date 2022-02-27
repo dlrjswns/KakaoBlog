@@ -17,6 +17,8 @@ class KakaoBlogController: BaseViewController {
         sc.searchBar.placeholder = "Search blog"
         sc.searchBar.barTintColor = .systemBackground
         sc.obscuresBackgroundDuringPresentation = false
+        sc.searchBar.scopeButtonTitles = ["blog", "naver"]
+        sc.searchBar.showsScopeBar = true
         return sc
     }()
     
@@ -35,7 +37,6 @@ class KakaoBlogController: BaseViewController {
         super.viewDidLoad()
         
         viewModel.kakaoBlogMenus.bind(to: selfView.tableView.rx.items(cellIdentifier: KakaoBlogCell.identifier, cellType: KakaoBlogCell.self)) { index, item, cell in
-            print("didload")
             cell.configureUI(item: item)
         }.disposed(by: disposeBag)
         
@@ -55,6 +56,16 @@ class KakaoBlogController: BaseViewController {
         
     }
     
+//    func scopeButtonObservable() {
+//        let seletedIndex = searchController.searchBar.selectedScopeButtonIndex
+//        switch seletedIndex {
+//        case 1:
+//
+//        case 2:
+//            break
+//        }
+//    }
+    
     override func layout() {
         view.addSubview(selfView)
         selfView.translatesAutoresizingMaskIntoConstraints = false
@@ -72,9 +83,20 @@ class KakaoBlogController: BaseViewController {
         selfView.tableView.register(KakaoBlogCell.self, forCellReuseIdentifier: KakaoBlogCell.identifier)
         selfView.tableView.delegate = self
         selfView.loadingView.isHidden = true
+        searchController.searchResultsUpdater = self
         
         self.navigationItem.searchController = searchController
         self.navigationController?.navigationBar.prefersLargeTitles = true
-
     }
 }
+
+extension KakaoBlogController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let seletedIndex = searchController.searchBar.selectedScopeButtonIndex
+        if seletedIndex == 0 {
+            viewModel.scopeTypeInput.onNext(.blog)
+        }
+    }
+}
+
+

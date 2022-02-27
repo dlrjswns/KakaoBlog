@@ -8,6 +8,10 @@
 import RxSwift
 import RxCocoa
 
+enum ScopeType {
+    case blog
+}
+
 class KakaoBlogViewModel {
     private let usecase: KakaoBlogUsecase
     var disposeBag = DisposeBag()
@@ -19,6 +23,7 @@ class KakaoBlogViewModel {
     
     //View -> ViewModel
     let queryInput: AnyObserver<String>
+    let scopeTypeInput: AnyObserver<ScopeType>
     let fetchMenus: AnyObserver<Void>
     
     init(usecase: KakaoBlogUsecase) {
@@ -33,32 +38,53 @@ class KakaoBlogViewModel {
 //            }
 //        }).disposed(by: disposeBag)
         
-        let querySubject = BehaviorSubject<String>(value: "")
+        let querySubject = PublishSubject<String>()
         let fetching = PublishSubject<Void>()
         let menus = BehaviorRelay<[KakaoBlogModel]>(value: [])
         let activating = PublishSubject<Bool>()
         let error = PublishSubject<KakaoError>()
+        let scopeType = BehaviorSubject<ScopeType>(value: .blog)
         
         fetchMenus = fetching.asObserver()
         queryInput = querySubject.asObserver()
         errorMessage = error.asSignal(onErrorJustReturn: KakaoError.defaultError)
         kakaoBlogMenus = menus.asObservable()
         activated = activating.asDriver(onErrorJustReturn: false)
+        scopeTypeInput = scopeType.asObserver()
         
-        fetching
-            .flatMap{querySubject.asObservable()}
-            .subscribe(onNext: { query in
-                activating.onNext(true)
-                _ = usecase.fetchKakaoBlog(query: query).subscribe(onNext: { result in
-                    activating.onNext(false)
-                    switch result {
-                        case .failure(let err):
-                            error.onNext(err)
-                        case .success(let kakaoBlogEntity):
-                            menus.accept(usecase.fetchKakaoBlogModel(entity: kakaoBlogEntity))
-                    }
-                })
-            }).disposed(by: disposeBag)
+        scopeType.subscribe(onNext: { scopeBtnType in
+            switch scopeBtnType {
+            case .blog:
+                querySubject.asObservable().subscribe(onNext: { query in
+                    print("query = \(query)")
+                    activating.onNext(true)
+                    _ = usecase.fetchKakaoBlog(query: query).subscribe(onNext: { result in
+                        activating.onNext(false)
+                        switch result {
+                            case .failure(let err):
+                                error.onNext(err)
+                            case .success(let kakaoBlogEntity):
+                                menus.accept(usecase.fetchKakaoBlogModel(entity: kakaoBlogEntity))
+                        }
+                    })
+                }).disposed(by: self.disposeBag)
+            }
+        }).disposed(by: disposeBag)
+        
+//        fetching
+//            .flatMap{querySubject.asObservable()}
+//            .subscribe(onNext: { query in
+//                activating.onNext(true)
+//                _ = usecase.fetchKakaoBlog(query: query).subscribe(onNext: { result in
+//                    activating.onNext(false)
+//                    switch result {
+//                        case .failure(let err):
+//                            error.onNext(err)
+//                        case .success(let kakaoBlogEntity):
+//                            menus.accept(usecase.fetchKakaoBlogModel(entity: kakaoBlogEntity))
+//                    }
+//                })
+//            }).disposed(by: disposeBag)
         
         
 //        querySubject.asObservable().subscribe(onNext: { query in
