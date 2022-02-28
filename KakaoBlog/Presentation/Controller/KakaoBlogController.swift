@@ -12,12 +12,14 @@ import RxSwift
 class KakaoBlogController: BaseViewController {
     
     let selfView = KakaoBlogView()
+//    var currentSortType: ScopeType = .blog
+    
     var searchController: UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
         sc.searchBar.placeholder = "Search blog"
         sc.searchBar.barTintColor = .systemBackground
         sc.obscuresBackgroundDuringPresentation = false
-        sc.searchBar.scopeButtonTitles = ["blog", "naver"]
+        sc.searchBar.scopeButtonTitles = ["Blog", "Book"]
         sc.searchBar.showsScopeBar = true
         return sc
     }()
@@ -35,7 +37,8 @@ class KakaoBlogController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let rp = KakaoBlogRepositoryImpl()
+        rp.fetchKakaoBookWithAlamofire(query: "dk")
         viewModel.kakaoBlogMenus.bind(to: selfView.tableView.rx.items(cellIdentifier: KakaoBlogCell.identifier, cellType: KakaoBlogCell.self)) { index, item, cell in
             cell.configureUI(item: item)
         }.disposed(by: disposeBag)
@@ -54,17 +57,17 @@ class KakaoBlogController: BaseViewController {
             self?.selfView.loadingView.isHidden = !isActivating
         }).disposed(by: disposeBag)
         
+        viewModel.scopeTypeObservable.subscribe(onNext: { [weak self] scopeType in
+            switch scopeType {
+            case .blog:
+                self?.searchController.searchBar.placeholder = "Search blog"
+                self?.configureNavigationBar(largeTitleColor: .white, backgoundColor: .systemBlue, tintColor: .white, title: "Daum blog", preferredLargeTitle: true)
+            case .book:
+                self?.searchController.searchBar.placeholder = "Search book"
+                self?.configureNavigationBar(largeTitleColor: .white, backgoundColor: .systemPink, tintColor: .white, title: "Daum book", preferredLargeTitle: true)
+            }
+        }).disposed(by: disposeBag)
     }
-    
-//    func scopeButtonObservable() {
-//        let seletedIndex = searchController.searchBar.selectedScopeButtonIndex
-//        switch seletedIndex {
-//        case 1:
-//
-//        case 2:
-//            break
-//        }
-//    }
     
     override func layout() {
         view.addSubview(selfView)
@@ -94,7 +97,13 @@ extension KakaoBlogController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let seletedIndex = searchController.searchBar.selectedScopeButtonIndex
         if seletedIndex == 0 {
+//            searchController.searchBar.placeholder = "Search blog"
             viewModel.scopeTypeInput.onNext(.blog)
+//            configureNavigationBar(largeTitleColor: .white, backgoundColor: .systemBlue, tintColor: .white, title: "Daum blog", preferredLargeTitle: true)
+        }else if seletedIndex == 1 {
+//            searchController.searchBar.placeholder = "Search book"
+            viewModel.scopeTypeInput.onNext(.book)
+//            configureNavigationBar(largeTitleColor: .white, backgoundColor: .systemPink, tintColor: .white, title: "Daum book", preferredLargeTitle: true)
         }
     }
 }

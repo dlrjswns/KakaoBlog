@@ -8,4 +8,5 @@ target 'KakaoBlog' do
   # Pods for KakaoBlog
    pod 'RxSwift', '6.5.0'
    pod 'RxCocoa', '6.5.0'
+   pod 'Alamofire', '~> 5.5'
 end

@@ -10,6 +10,7 @@ import RxCocoa
 
 enum ScopeType {
     case blog
+    case book
 }
 
 class KakaoBlogViewModel {
@@ -20,6 +21,7 @@ class KakaoBlogViewModel {
     let kakaoBlogMenus: Observable<[KakaoBlogModel]>
     let activated: Driver<Bool>
     let errorMessage: Signal<KakaoError>
+    let scopeTypeObservable: Observable<ScopeType>
     
     //View -> ViewModel
     let queryInput: AnyObserver<String>
@@ -51,6 +53,7 @@ class KakaoBlogViewModel {
         kakaoBlogMenus = menus.asObservable()
         activated = activating.asDriver(onErrorJustReturn: false)
         scopeTypeInput = scopeType.asObserver()
+        scopeTypeObservable = scopeType.asObservable()
         
         scopeType.subscribe(onNext: { scopeBtnType in
             switch scopeBtnType {
@@ -68,6 +71,7 @@ class KakaoBlogViewModel {
                         }
                     })
                 }).disposed(by: self.disposeBag)
+            case .book: break
             }
         }).disposed(by: disposeBag)
         
