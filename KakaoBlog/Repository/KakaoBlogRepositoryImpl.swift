@@ -44,6 +44,13 @@ class KakaoBlogRepositoryImpl: KakaoBlogRepository {
 //        AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil, interceptor: nil, requestModifier: nil).responseDecodable(of: KakaoBlogEntity.self) { response in
 //            debugPrint("response = \(response)")
 //        }
+        AF.request(url) { request in
+            request.allHTTPHeaderFields = [
+                "df" : "df"
+            ]
+        }
+        
+        
         AF.request(url, headers: headers).responseData { response in
             if let response = response as? HTTPURLResponse, !(200..<300).contains(response.statusCode) {
                 
